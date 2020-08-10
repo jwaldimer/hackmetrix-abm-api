@@ -1,24 +1,85 @@
-# README
+# Hackmetrix ABM Api test
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+*This is a small project with an Api Auth for handle users data according to his role. The Api handle the creation and authentication of users and gives the data according to his role.* 
 
-Things you may want to cover:
+### Getting Started
+These instructions will get you a copy of the project up and running on your local machine for testing purposes.
 
-* Ruby version
+### Prerequisites
+You had to have installed the latest version of Ruby (2.7.0) and Ruby on rails (6.0.3.2).
 
-* System dependencies
+```
+gem install rails -v 6.0.3.2
+```
 
-* Configuration
+### Installing
+Clone the app repo.
 
-* Database creation
+```
+git clone repo_url
+```
+Run the bundle to install all gems and dependencies.
 
-* Database initialization
+```
+bundle install
+```
 
-* How to run the test suite
+Run the commands to init the database structure.
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rails db:create
+rails db:migrate
+```
 
-* Deployment instructions
+Then, run the application with:
 
-* ...
+```
+rails s
+```
+
+### Api endpoints
+
+1. SignUp: Create an user into the app
+  ```
+  POST /signup
+  ```
+  format:
+
+  ```
+  {
+    "user": {
+      "email": "email@domain.com",
+      "password": "password"
+    }
+  }
+  ```
+2. Login: Create a new session for the user. It will rsponnd with a JWT for the authentication
+  ```
+  POST /login
+  ```
+  format
+  ```
+  {
+    "user": {
+      "email": "email@domain.com",
+      "password": "password"
+    }
+  }
+  ```
+3. Logout: Finish the session for the logged user
+  ```
+  DELETE /logout
+  ```
+4. Get user data: Get the data for the user logged in the app with role different of administrator
+  ```
+  GET /api/v1/users/:id
+  ```
+  This will need the authorization token for the user in the response header
+
+5. Set user data: Set the data for a user. This action only can be done for an user with administrator role
+  ```
+  PUT /api/v1/users/:id
+  ```
+  This will need the authorization token for the user in the response header
+### Author
+* **Jorge Gómez**
