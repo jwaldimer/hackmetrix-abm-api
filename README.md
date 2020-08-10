@@ -1,6 +1,8 @@
 # Hackmetrix ABM Api test
 
-*This is a small project with an Api Auth for handle users data according to his role. The Api handle the creation and authentication of users and gives the data according to his role.* 
+*This is a small project with an Api Auth for handle users data according to his role. The Api handle the creation and authentication of users and gives the data according to his role.*
+
+*The API use Devise and Devise JWT for the authentication and CanCanCan for the permissions.* 
 
 ### Getting Started
 These instructions will get you a copy of the project up and running on your local machine for testing purposes.
@@ -39,7 +41,7 @@ rails s
 
 ### Api endpoints
 
-1. SignUp: Create an user into the app
+1. SignUp: Create an user into the app.
   ```
   POST /signup
   ```
@@ -53,11 +55,11 @@ rails s
     }
   }
   ```
-2. Login: Create a new session for the user. It will rsponnd with a JWT for the authentication
+2. Login: Create a new session for the user. It will rsponnd with a JWT for the authentication.
   ```
   POST /login
   ```
-  format
+  format:
   ```
   {
     "user": {
@@ -66,20 +68,32 @@ rails s
     }
   }
   ```
-3. Logout: Finish the session for the logged user
+3. Logout: Finish the session for the logged user.
   ```
   DELETE /logout
   ```
-4. Get user data: Get the data for the user logged in the app with role different of administrator
+4. Get user data: Get the data for the user logged in the app with role different of administrator.
   ```
   GET /api/v1/users/:id
   ```
-  This will need the authorization token for the user in the response header
+  *This will need the authorization token for the user in the response header*
 
-5. Set user data: Set the data for a user. This action only can be done for an user with administrator role
+5. Set user data: Set the data for a user. This action only can be done for an user with administrator role.
   ```
   PUT /api/v1/users/:id
   ```
-  This will need the authorization token for the user in the response header
+  format:
+  ```
+  {
+    "user": {
+      "name": "name",
+      "last_name": "last name",
+      "gender": "gender",
+      "description": "Lorem ipsum dolor",
+      "role": ["admin", "role1", "role2"] (Use only one of the options) 
+    }
+  }
+  ```
+  *This will need the authorization token for the user in the response header*
 ### Author
 * **Jorge Gómez**
