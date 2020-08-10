@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: %i[show update]
 
   def show
@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
+    if @user.update(user_params)
+      render json: @user, status: :ok
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
   end
 
   private
