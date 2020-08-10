@@ -1,5 +1,9 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: %i[show update]
+
+  load_and_authorize_resource
+  check_authorization
 
   def show
     render json: @user, status: :ok
@@ -20,7 +24,8 @@ class Api::V1::UsersController < ApplicationController
       :name,
       :last_name,
       :gender,
-      :description
+      :description,
+      :role
     )
   end
 

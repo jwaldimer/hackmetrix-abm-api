@@ -43,3 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Authentication
 gem 'devise' 
 gem 'devise-jwt'
+gem 'cancancan'
+
+# Return formatted data
+gem 'active_model_serializers', '~> 0.10.0'
