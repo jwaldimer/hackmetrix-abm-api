@@ -4,17 +4,17 @@
 
 *The API use Devise and Devise JWT for the authentication and CanCanCan for the permissions.* 
 
-### Getting Started
+### Getting Started.
 These instructions will get you a copy of the project up and running on your local machine for testing purposes.
 
-### Prerequisites
+### Prerequisites.
 You had to have installed the latest version of Ruby (2.7.0) and Ruby on rails (6.0.3.2).
 
 ```
 gem install rails -v 6.0.3.2
 ```
 
-### Installing
+### Installing.
 Clone the app repo.
 
 ```
@@ -32,6 +32,10 @@ Run the commands to init the database structure.
 rails db:create
 rails db:migrate
 ```
+Run the seed to create an initial test admin user with the email: "user_test_admin@email.com" and password: "123456" 
+```
+rails db:seed
+```
 
 Then, run the application with:
 
@@ -39,9 +43,9 @@ Then, run the application with:
 rails s
 ```
 
-### Api endpoints
+### Api endpoints.
 
-1. SignUp: Create an user into the app.
+**1. SignUp:** Create an user into the app.
   ```
   POST /signup
   ```
@@ -55,7 +59,7 @@ rails s
     }
   }
   ```
-2. Login: Create a new session for the user. It will rsponnd with a JWT for the authentication.
+**2. Login:** Create a new session for the user. It will rsponnd with a JWT for the authentication.
   ```
   POST /login
   ```
@@ -68,17 +72,17 @@ rails s
     }
   }
   ```
-3. Logout: Finish the session for the logged user.
+**3. Logout:** Finish the session for the logged user.
   ```
   DELETE /logout
   ```
-4. Get user data: Get the data for the user logged in the app with role different of administrator.
+**4. Get user data:** Get the data for the user logged in the app with role different of administrator.
   ```
   GET /api/v1/users/:id
   ```
   *This will need the authorization token for the user in the response header*
 
-5. Set user data: Set the data for a user. This action only can be done for an user with administrator role.
+**5. Set user data:** Set the data for a user. This action only can be done for an user with administrator role.
   ```
   PUT /api/v1/users/:id
   ```
@@ -90,10 +94,10 @@ rails s
       "last_name": "last name",
       "gender": "gender",
       "description": "Lorem ipsum dolor",
-      "role": ["admin", "role1", "role2"] (Use only one of the options) 
+      "role": ("admin", "role1", "role2") (Use only one of the options) 
     }
   }
   ```
   *This will need the authorization token for the user in the response header*
-### Author
+### Author.
 * **Jorge Gómez**
