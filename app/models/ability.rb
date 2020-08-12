@@ -6,8 +6,13 @@ class Ability
     if user.present?
       if user.admin?
         can :manage, User
+        can :manage, Article
+      elsif user.role1?
+        can :read, User, id: user.id
+        can :read, Article
       else
         can :read, User, id: user.id
+        can :read, Article, user_id: user.id
       end
     end
   end
