@@ -22,28 +22,7 @@ Clone the app repo.
 ```
 git clone repo_url
 ```
-Run the bundle to install all gems and dependencies.
 
-```
-bundle install
-```
-
-Run the commands to init the database structure.
-
-```
-rails db:create
-rails db:migrate
-```
-Run the seed to create an initial test admin user with the email: "user_test_admin@email.com" and password: "123456" 
-```
-rails db:seed
-```
-
-Then, run the application with:
-
-```
-rails s
-```
 ### Docker configuration.
 In this branch the Dockerfile was setted to the app work in a production environment and use Postgres instead SQLite3
 
@@ -56,9 +35,17 @@ Then, run the Postgres Docker container:
 sudo docker run --name hackmetrix-abm-api-pg -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
 ```
 
-Finally, run the Docker container for the app:
+Run the Docker container for the app:
 ```
 sudo docker run --name hackmetrix-abm-api-web -e DATABASE_HOST=172.17.0.1 -e DATABASE_PORT=5432 -e DATABASE_USERNAME=postgres -e DATABASE_PASSWORD=postgres -p 3000:3000 hackmetrix-abm-api
+```
+To run the migrations connect to the container.
+```
+sudo docker exec -it hackmetrix-abm-api-web bash
+```
+and there execute the required rake tasks.
+```
+bundle exec rake db:migrate db:seed
 ```
 ### Api endpoints.
 
