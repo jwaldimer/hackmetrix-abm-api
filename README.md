@@ -1,8 +1,10 @@
-# Hackmetrix ABM Api test
+# Hackmetrix ABM Api test (with Docker)
 
 *This is a small project with an Api Auth for handle users data according to his role. The Api handle the creation and authentication of users and gives the data according to his role.*
 
 *The API use Devise and Devise JWT for the authentication and CanCanCan for the permissions.* 
+
+*Tha API was dockerized in the Dockerfile and the database was change to work with Postgres*
 
 ### Getting Started.
 These instructions will get you a copy of the project up and running on your local machine for testing purposes.
@@ -42,7 +44,22 @@ Then, run the application with:
 ```
 rails s
 ```
+### Docker configuration.
+In this branch the Dockerfile was setted to the app work in a production environment and use Postgres instead SQLite3
 
+First to all you must build the Docker image:
+```
+sudo docker build . -t hackmetrix-abm-api
+```
+Then, run the Postgres Docker container:
+```
+sudo docker run --name hackmetrix-abm-api-pg -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
+```
+
+Finally, run the Docker container for the app:
+```
+sudo docker run --name hackmetrix-abm-api-web -e DATABASE_HOST=172.17.0.1 -e DATABASE_PORT=5432 -e DATABASE_USERNAME=postgres -e DATABASE_PASSWORD=postgres -p 3000:3000 hackmetrix-abm-api
+```
 ### Api endpoints.
 
 **1. SignUp:** Create an user into the app.
