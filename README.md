@@ -46,13 +46,13 @@ rails s
 ```
 
 ### Api Roles.
-The Api handle 4 test roles for the data administrations.
+The Api handle 4 test roles for the data administration.
 
 **admin:** Uer with the total control of the app, can create users, update his data, create new articles, edited, and read data from any article.
 
 **role1:** Users with this role can read his own user data and can read all articles created.
 
-**role2 and role 3:** This user roles only can read his own user data and read his own articles associated.
+**role2 and role3:** This user roles only can read his own user data and read his own articles associated.
 
 ### Api endpoints.
 **Request headers**
@@ -113,7 +113,7 @@ x-content-type-options: nosniff
   ```
   DELETE /logout
   ```
-  
+
 **4. Get user data:** Get the data for the user logged in the app with role different of administrator.
   ```
   GET /api/v1/users/:id
