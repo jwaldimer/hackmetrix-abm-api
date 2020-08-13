@@ -4,7 +4,7 @@
 
 *The API use Devise and Devise JWT for the authentication and CanCanCan for the permissions.* 
 
-*Also, the API handle yhe creation and administration of articles asociated to users*
+*Also, the API handle the creation and administration of articles asociated to users*
 
 ### Getting Started.
 These instructions will get you a copy of the project up and running on your local machine for testing purposes.
@@ -44,12 +44,16 @@ Then, run the application with:
 ```
 rails s
 ```
+
 ### Api Roles.
 The Api handle 4 test roles for the data administrations.
 
-*admin:* Uer with the total control of the app, can create users, update his data, create new articles, edited, and read data from any article.
-*role1:* Users with this role can read his own user data and can read all articles created.
-*role2 and role 3:* This user roles only can read his own user data and read his own articles associated.
+**admin:** Uer with the total control of the app, can create users, update his data, create new articles, edited, and read data from any article.
+
+**role1:** Users with this role can read his own user data and can read all articles created.
+
+**role2 and role 3:** This user roles only can read his own user data and read his own articles associated.
+
 ### Api endpoints.
 **Request headers**
 For all request you need to send the common header:
@@ -73,6 +77,7 @@ x-content-type-options: nosniff
   }
   ```
   A response of “200 OK” indicating that the request has succeeded.
+
 **2. Login:** Create a new session for the user. It will rsponnd with a JWT for the authentication.
   ```
   POST /login
@@ -108,7 +113,7 @@ x-content-type-options: nosniff
   ```
   DELETE /logout
   ```
-
+  
 **4. Get user data:** Get the data for the user logged in the app with role different of administrator.
   ```
   GET /api/v1/users/:id
@@ -134,6 +139,7 @@ x-content-type-options: nosniff
   ```
   A response of “200 OK” indicating that the request has succeeded.
   > This will need the authorization token for the user in the response header
+
 **6. Create a new Article:** Create a new Article. This action only can be done for a admin user.
   ```
   POST /api/v1/articles
@@ -149,6 +155,7 @@ x-content-type-options: nosniff
   }
   ```
   A response of “200 OK” indicating that the request has succeeded.
+  > This will need the authorization token for the user in the response header
 
 **7. Update an Article:** Update the data of an Article. This action only can be done for a admin user.
   ```
@@ -165,6 +172,7 @@ x-content-type-options: nosniff
   }
   ```
   A response of “200 OK” indicating that the request has succeeded.
+  > This will need the authorization token for the user in the response header
 
 **9. Get the data from an Article:** Access to the data from an article. The roles admin and role1 can access to all articles, the role 2 and role 3 only can acess to the Articles associated to his user.
   ```
@@ -180,6 +188,7 @@ x-content-type-options: nosniff
   }
   ```
   A response of “200 OK” indicating that the request has succeeded.
+  > This will need the authorization token for the user in the response header
 
 ### Author.
 * **Jorge Gómez**
