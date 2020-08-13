@@ -5,5 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
   
-  enum role: { admin: 0, role1: 1, role2: 2 }
+  has_many :articles
+  
+  enum role: { admin: 0, role1: 1, role2: 2, role3: 3 }
 end
